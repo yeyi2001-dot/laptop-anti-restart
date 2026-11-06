@@ -2,16 +2,42 @@
 
 **Laptop Anti-Restart 1.0 · Share Edition**
 
-让一个 CPU 核心持续满载，把机器维持在工作温度，避免「冷下来就死机重启」。
-
-> 免费、开源、免安装、不需要管理员权限。
-> Free, open source, portable, no admin required. Windows 10/11 x64.
-
 [中文](#中文) · [English](#english)
 
 ---
 
 # 中文
+
+## 软件说明
+
+**一句话**：让一个 CPU 核心持续满载，把笔记本维持在工作温度，避免「冷下来就死机重启」。
+
+**给谁用**：开机后反复死机、重启，严重时进不去系统，而且**热起来反而稳定**的笔记本。
+（多见于 CPU 焊点受损、供电链路老化这类"暗病"——修不好，但能拖。）
+
+**不给谁用**：只是**满载才崩**的机器。那是供电/散热问题，请直接看下面的「四步排查」，保温帮不上忙。
+
+**它做什么**
+
+| 能力 | 说明 |
+|---|---|
+| 防重启保温 | 一个核心持续接近满载，让机器不冷下来。默认关闭，手动开启，可随时停止 |
+| 实时功耗 | 显卡（NVIDIA 实测）· 处理器（按占用率推算）· 整机（推算 / 电池放电时实测）+ 曲线 |
+| 显示器控制 | 点方块断开某台屏（鼠标不会再移过去）· 再点虚线框连回 · 仅内屏 / 仅外屏 / 扩展 / 复制 |
+| 故障诊断 | 统计「电源断连」与「异常重启」，最长 180 天，48 格半小时热力图 + 按天柱状图 |
+| 历史曲线 | 6 小时 / 24 小时 / 3 天 / 7 天，5 秒一个采样 |
+
+**它不做什么**：不修硬件、不改系统设置、不写注册表、不装开机启动、不需要管理员权限。
+
+| 项 | 说明 |
+|---|---|
+| 系统 | Windows 10 / 11，64 位 |
+| 体积 | 单文件 13.7 MB，免安装，复制到任何文件夹都能跑 |
+| 依赖 | 无第三方库；GPU 功耗需要 NVIDIA 显卡（A 卡/核显显示 `—`，其余功能正常） |
+| 数据 | `%LOCALAPPDATA%\AntiRestart\`，日志 7 天自动清理，删文件夹即清空 |
+| 代价 | 常年多耗 10–20W，机器长期偏热，风扇常转，对电池寿命不利 |
+
+> 程序未做代码签名，首次运行会被 SmartScreen 拦一次：**更多信息 → 仍要运行**。
 
 ## 为什么做这个
 
@@ -144,6 +170,40 @@ MIT License.
 ---
 
 # English
+
+## What this software is
+
+**One line**: keeps one CPU core at full load so the laptop stays warm and stops freezing / rebooting after it cools down.
+
+**Who it is for**: machines that freeze or reboot repeatedly after boot — sometimes never reaching the desktop —
+and that become **more stable once warm**. Typically a laptop with damaged CPU solder joints or a worn power path:
+not repairable, but keepable.
+
+**Who it is NOT for**: machines that only crash **under full load**. That is a power or cooling problem — see the
+four checks below. Keep-warm will not help and will make temperatures worse.
+
+**What it does**
+
+| Capability | Description |
+|---|---|
+| Anti-restart keep-warm | One core at ~100%, keeps the machine warm. **Off by default**, manual start, stops instantly |
+| Live power | GPU (measured via nvidia-smi) · CPU (estimated) · system total (estimated, measured on battery) + curve |
+| Display control | Click a tile to disconnect that monitor (cursor can't enter it) · click the dashed tile to reconnect · internal / external / extend / clone |
+| Fault diagnostics | Power-disconnect and unexpected-restart counts, up to 180 days, 48-cell half-hour heatmap |
+| History | 6h / 24h / 3d / 7d, sampled every 5 s |
+
+**What it does NOT do**: no hardware repair, no system settings changes, no registry writes, no startup entry,
+no administrator rights required.
+
+| Item | Detail |
+|---|---|
+| OS | Windows 10 / 11, 64-bit |
+| Size | Single 13.7 MB executable, portable |
+| Dependencies | None (stdlib only); GPU power needs an NVIDIA card (otherwise `—`, everything else works) |
+| Data | `%LOCALAPPDATA%\AntiRestart\`, logs auto-expire after 7 days |
+| Cost | 10–20 W continuously, permanently higher temperatures, fan always on, worse battery longevity |
+
+> The binary is unsigned: SmartScreen will warn once — **More info → Run anyway**.
 
 ## Why this exists
 
