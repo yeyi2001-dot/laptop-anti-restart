@@ -16,10 +16,10 @@ import time
 import tkinter as tk
 from tkinter import messagebox
 
-APP_NAME = "功耗与显示器工具 · 分享版"
+APP_NAME = "笔记本防重启 1.0 · 分享版"
 
 # ---------- 数据目录（必须在导入子模块之前设置） ----------
-DATA_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "PowerShare")
+DATA_DIR = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")), "AntiRestart")
 LOG_DIR = os.path.join(DATA_DIR, "powerlog")
 try:
     os.makedirs(LOG_DIR, exist_ok=True)
@@ -434,7 +434,7 @@ class App:
         inner.pack(fill="x", padx=12, pady=10)
         row = tk.Frame(inner, bg=CARD)
         row.pack(fill="x")
-        tk.Label(row, text="保温 KEEP-WARM（可选·默认关闭）", bg=CARD, fg=FG,
+        tk.Label(row, text="防重启保温 KEEP-WARM（默认关闭）", bg=CARD, fg=FG,
                  font=("Consolas", 9, "bold")).pack(side="left")
         self.btn_keep = tk.Button(row, text="开始 START", bg=PANEL, fg=OK,
                                   activebackground="#16232c", activeforeground=OK,
@@ -444,8 +444,8 @@ class App:
         self.lbl_keep = tk.Label(inner, text="未开启 · 不会占用 CPU", bg=CARD, fg=DIM,
                                  font=("Consolas", 8), anchor="w", justify="left")
         self.lbl_keep.pack(fill="x", pady=(6, 2))
-        tk.Label(inner, text="仅对「冷机启动就死机」的机器可能有帮助；"
-                             "热机满载崩溃请先查供电与散热。",
+        tk.Label(inner, text="适用于「开机后反复死机重启、热起来反而稳定」的机器；"
+                             "满载才崩的请先查供电与散热。",
                  bg=CARD, fg=FAINT, font=("Microsoft YaHei UI", 8),
                  anchor="w", justify="left", wraplength=400).pack(fill="x")
 
@@ -576,10 +576,11 @@ class App:
             self._draw_keep()
             return
         if not messagebox.askokcancel(
-                "开启保温",
-                "保温会让一个 CPU 核心持续接近满载，用来让机器保持温热。\n\n"
-                "· 只对「冷机启动就死机」这种形态可能有帮助\n"
-                "· 会持续耗电约 10–20W，笔记本温度长期偏高\n"
+                "开启防重启保温",
+                "让一个 CPU 核心持续接近满载，使机器维持在较高温度。\n\n"
+                "· 适用于「开机后反复死机重启、热起来反而稳定」的暗病机\n"
+                "· 这不能修复硬件，只是把机器维持在一个还能用的状态\n"
+                "· 持续耗电约 10–20W，笔记本温度长期偏高、风扇常转\n"
                 "· 使用电池或显卡超过 80℃ 时会自动暂停\n\n"
                 "确定开启吗？",
                 parent=self.root):
