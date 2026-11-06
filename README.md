@@ -88,9 +88,12 @@
 
 ## 下载与使用
 
-1. 到 [Releases](../../releases) 下载 `笔记本防重启1.0分享版.exe`
+1. 到 [Releases](../../releases) 下载 `Laptop-Anti-Restart-1.0-Share.exe`（中文说明：`USAGE-zh.txt`）
 2. 双击运行（免安装，不写注册表，不建开机启动）
 3. 首次会看到「Windows 已保护你的电脑」→ **更多信息 → 仍要运行**（未做代码签名）
+
+> GitHub 会剥离 Release 附件名里的非 ASCII 字符，所以下载到的文件名是英文 `Laptop-Anti-Restart-1.0-Share.exe`；
+> 程序窗口标题仍是「笔记本防重启 1.0 · 分享版」，不影响使用。
 
 **如果你要的只是防重启**：打开后点「开始 START」，确认，然后最小化。它会一直保温到你点停止或关窗口。
 
@@ -198,7 +201,7 @@ is more often caused by things that **can actually be fixed**:
 
 ## Usage
 
-1. Download `笔记本防重启1.0分享版.exe` from [Releases](../../releases)
+1. Download `Laptop-Anti-Restart-1.0-Share.exe` from [Releases](../../releases) (Chinese manual: `USAGE-zh.txt`)
 2. Double-click. Portable — no installer, no registry, no startup entry
 3. SmartScreen will warn ("Windows protected your PC") because the binary is unsigned → **More info → Run anyway**
 
